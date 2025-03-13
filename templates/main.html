@@ -4,37 +4,48 @@
 </head>
 <body>
     <div class="music-player">
-    {% for music in musics %}
+        {% for music in musics %}
         <div class="cover">
-            <img alt="music image" src="{{ music.image.url }}">
+            <img alt="music image" src="{{ music.image.url }}" />
         </div>
         <div class="titre">
             <h3>{{ music.author.full_name }}</h3>
             <h1>{{ music.title }}</h1>
         </div>
         <center>
-            <a href="{% if musics.has_previous %}?page={{ musics.previous_page_number }}{% endif %}">
+            <a
+                href="{% if musics.has_previous %}?page={{ musics.previous_page_number }}{% endif %}"
+            >
                 <i class="fa fa-step-backward fa-2x"></i>
             </a>
-            &nbsp; &nbsp; &nbsp; 
-            <a href="{% if musics.has_next %}?page={{ musics.next_page_number }}{% endif %}">
-            <i class="fa fa-step-forward fa-2x"></i>
+            &nbsp; &nbsp; &nbsp;
+            <a
+                href="{% if musics.has_next %}?page={{ musics.next_page_number }}{% endif %}"
+            >
+                <i class="fa fa-step-forward fa-2x"></i>
             </a>
         </center>
-        
+
         <div class="lecteur">
-            <audio class="fc-media" style="width: 100%;" id="fc-media">
-                <source type="audio/mp3" src="{% if music.audio_file %}{{ music.audio_file.url }}{% else %}{{ music.audio_link }}{% endif %}">
+            <audio class="fc-media" style="width: 100%" id="fc-media">
+                <source
+                    type="audio/mp3"
+                    src="{% if music.audio_file %}{{ music.audio_file.url }}{% else %}{{ music.audio_link }}{% endif %}"
+                />
             </audio>
         </div>
-    </div>    
-        
+    </div>
+
     <div class="right-section">
-      <div class="lyrics-container">
-        <div class="lyrics">
-            <p id="song-lyrics" class="song-lyrics" data-lyrics="{{ music.lyrics }}"></p>
+        <div class="lyrics-container">
+            <div class="lyrics">
+                <p
+                    id="song-lyrics"
+                    class="song-lyrics"
+                    data-lyrics="{{ music.lyrics }}"
+                ></p>
+            </div>
         </div>
-     </div>
-    </div>    
+    </div>
     {% endfor %}
 </body>
